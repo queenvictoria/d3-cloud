@@ -22,6 +22,7 @@ module.exports = function() {
       event = dispatch("word", "end"),
       timer = null,
       random = Math.random,
+      board = zeroArray((size[0] >> 5) * size[1]),
       cloud = {},
       canvas = cloudCanvas;
 
@@ -31,7 +32,6 @@ module.exports = function() {
 
   cloud.start = function() {
     var contextAndRatio = getContext(canvas()),
-        board = zeroArray((size[0] >> 5) * size[1]),
         bounds = null,
         n = words.length,
         i = -1,
@@ -194,6 +194,10 @@ module.exports = function() {
 
   cloud.random = function(_) {
     return arguments.length ? (random = _, cloud) : random;
+  };
+
+  cloud.board = function(_) {
+    return arguments.length ? (board = _, cloud) : board;
   };
 
   cloud.on = function() {
